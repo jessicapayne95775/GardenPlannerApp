@@ -23,16 +23,20 @@ class MainActivity : AppCompatActivity() {
     private val CHANNEL_ID = "channel_id"
     private val NOTIFICATION_ID = 1
 
-    private lateinit var gardeningTipsGenerator: GardeningTipsGenerator
-    private lateinit var plantCompatibilityChecker: PlantCompatibilityChecker
+    private lateinit var gardeningTipsGenerator: GardeningTips
+
+    private lateinit var plantCompatibilityChecker: PlantCompatibility
+
     private lateinit var locationManager: LocationManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        gardeningTipsGenerator = GardeningTipsGenerator()
-        plantCompatibilityChecker = PlantCompatibilityChecker()
+        gardeningTipsGenerator = GardeningTips
+        ()
+        plantCompatibilityChecker = PlantCompatibility
+        ()
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
         // Add some example good and bad plant pairs
