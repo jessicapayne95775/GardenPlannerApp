@@ -10,9 +10,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import java.util.*
 
-class Notifications {
-
-    class GardenCareNotificationManager(private val context: Context) {
+    class Notifications(private val context: Context) {
         private val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -77,4 +75,3 @@ class Notifications {
             }
         }
     }
-}
