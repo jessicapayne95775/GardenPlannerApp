@@ -3,7 +3,6 @@ import kotlin.random.Random
 
 class GardeningTips {
 
-
         private val tips = listOf(
             "Water your plants thoroughly but less frequently.",
             "Mulch around your plants to help retain moisture and keep weeds down.",
@@ -17,7 +16,7 @@ class GardeningTips {
             "Check your plants for pests and diseases regularly to catch problems early."
         )
 
-        fun getRandomTip(): String {
+        public fun getRandomTip(): String {
             return tips[Random.nextInt(tips.size)]
         }
     }

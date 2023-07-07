@@ -1,21 +1,34 @@
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.payne.gardenplanner.GardeningTips
+import com.payne.gardenplanner.GardeningTips.*
+import com.payne.gardenplanner.PairPlantingActivity
 import com.payne.gardenplanner.Plant
 import com.payne.gardenplanner.PlantAdapter
 import com.payne.gardenplanner.R
 import kotlinx.android.synthetic.main.main_layout.btnAddPlant
+import kotlinx.android.synthetic.main.main_layout.btnPairPlanting
+import kotlinx.android.synthetic.main.main_layout.btnTips
 import kotlinx.android.synthetic.main.main_layout.etPlantDescription
 import kotlinx.android.synthetic.main.main_layout.etPlantName
 import kotlinx.android.synthetic.main.main_layout.etSoilDepth
 import kotlinx.android.synthetic.main.main_layout.etSunRequirement
 import kotlinx.android.synthetic.main.main_layout.etWaterRequirement
 import kotlinx.android.synthetic.main.main_layout.rvPlantList
+import kotlinx.android.synthetic.main.main_layout.tvGardeningTips
+
 //import kotlinx.android.synthetic.main.activity_garden_planner.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var plantAdapter : PlantAdapter
+    private lateinit var gardeningTips: GardeningTips
+    private lateinit var textView: TextView
+    private lateinit var btnDropDown: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
@@ -30,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             val plantSun = etSunRequirement.text.toString()
             val plantWater = etWaterRequirement.text.toString()
             val plantSoilDepth = etSoilDepth.text.toString()
-            if(plantName.isNotEmpty() && plantDescription.isNotEmpty()){
+            if(plantName.isNotEmpty() && plantDescription.isNotEmpty()) {
                 val plant = Plant(plantName, plantDescription, plantSoilDepth, plantSun, plantWater)
                 plantAdapter.addPlant(plant)
                 etPlantName.text.clear()
@@ -39,6 +52,16 @@ class MainActivity : AppCompatActivity() {
                 etWaterRequirement.text.clear()
                 etSoilDepth.text.clear()
             }
+        }
+
+        btnTips.setOnClickListener {
+            val randomTip = GardeningTips().getRandomTip()
+            tvGardeningTips.text = randomTip
+        }
+
+        btnPairPlanting.setOnClickListener {
+            val intent = Intent(this, PairPlantingActivity::class.java)
+            startActivity(intent)
         }
     }
 

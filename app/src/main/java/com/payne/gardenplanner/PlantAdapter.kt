@@ -30,6 +30,14 @@ class PlantAdapter(
             tvSunRequirement.text = curPlant.sunRequirement
             tvSoilDepth.text = curPlant.soilDepth
             tvWaterRequirement.text = curPlant.wateringRequirement
+
+            btnDropDown.setOnClickListener {
+                if (tvPlantDescription.visibility == View.VISIBLE) {
+                    tvPlantDescription.visibility = View.GONE
+                } else {
+                    tvPlantDescription.visibility = View.VISIBLE
+                }
+            }
         }
     }
 
