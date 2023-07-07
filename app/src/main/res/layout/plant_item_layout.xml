@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:paddingStart="32dp"
+    android:paddingEnd="8dp">
+
+    <Button
+        android:id="@+id/btnDropDown"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:text="V"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPlantName"
+        android:layout_width="0dp"
+        android:paddingStart="4dp"
+        android:layout_height="wrap_content"
+        android:text="Plant name goes here"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnDropDown"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPlantDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="45dp"
+        android:textSize="15sp"
+        android:text="Description Goes Here"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlantName" />
+
+    <TextView
+        android:id="@+id/tvSunRequirementsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="45dp"
+        android:textSize="15sp"
+        android:paddingEnd="8dp"
+        android:text="Sun Requirements:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlantDescription" />
+
+    <TextView
+        android:id="@+id/tvSoilDepthTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="45dp"
+        android:textSize="15sp"
+        android:paddingEnd="8dp"
+        android:text="Soil Depth:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWaterRequirementsTitle" />
+
+    <TextView
+        android:id="@+id/tvWaterRequirementsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="45dp"
+        android:textSize="15sp"
+        android:paddingEnd="8dp"
+        android:text="Water Requirements:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSunRequirementsTitle" />
+
+    <TextView
+        android:id="@+id/tvSunRequirement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Full Sun"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvSunRequirementsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlantDescription" />
+
+    <TextView
+        android:id="@+id/tvWaterRequirement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="2 to 3 inches per week"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvWaterRequirementsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvSunRequirement" />
+
+    <TextView
+        android:id="@+id/tvSoilDepth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="1/2 inches planting depth"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvSoilDepthTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvWaterRequirement" />
+</androidx.constraintlayout.widget.ConstraintLayout>
