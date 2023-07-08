@@ -1,71 +1,132 @@
+package com.payne.gardenplanner
+
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.payne.gardenplanner.GardeningTips
-import com.payne.gardenplanner.GardeningTips.*
-import com.payne.gardenplanner.PairPlantingActivity
-import com.payne.gardenplanner.Plant
-import com.payne.gardenplanner.PlantAdapter
-import com.payne.gardenplanner.R
-import kotlinx.android.synthetic.main.main_layout.btnAddPlant
-import kotlinx.android.synthetic.main.main_layout.btnPairPlanting
-import kotlinx.android.synthetic.main.main_layout.btnTips
-import kotlinx.android.synthetic.main.main_layout.etPlantDescription
-import kotlinx.android.synthetic.main.main_layout.etPlantName
-import kotlinx.android.synthetic.main.main_layout.etSoilDepth
-import kotlinx.android.synthetic.main.main_layout.etSunRequirement
-import kotlinx.android.synthetic.main.main_layout.etWaterRequirement
-import kotlinx.android.synthetic.main.main_layout.rvPlantList
-import kotlinx.android.synthetic.main.main_layout.tvGardeningTips
-
-//import kotlinx.android.synthetic.main.activity_garden_planner.*
+import com.payne.gardenplanner.databinding.MainLayoutBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var plantAdapter : PlantAdapter
-    private lateinit var gardeningTips: GardeningTips
-    private lateinit var textView: TextView
-    private lateinit var btnDropDown: Button
+    private lateinit var plantAdapter: PlantAdapter
+    private lateinit var gardeningTipsGenerator: GardeningTips
+    private lateinit var binding: MainLayoutBinding
+
+    private val initialPlantNameText = "Enter Plant Name"
+    private val initialPlantDescriptionText = "Enter Description"
+    private val initialSunRequirementText = "Enter Sun Requirements"
+    private val initialWaterRequirementText = "Water Requirements"
+    private val initialSoilDepthText = "Enter Soil Depth"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_layout)
+        binding = MainLayoutBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
         plantAdapter = PlantAdapter(mutableListOf())
+        binding.rvPlantList.adapter = plantAdapter
+        binding.rvPlantList.layoutManager = LinearLayoutManager(this)
 
-        rvPlantList.adapter = plantAdapter
-        rvPlantList.layoutManager = LinearLayoutManager(this)
-
-        btnAddPlant.setOnClickListener {
-            val plantName = etPlantName.text.toString()
-            val plantDescription = etPlantDescription.text.toString()
-            val plantSun = etSunRequirement.text.toString()
-            val plantWater = etWaterRequirement.text.toString()
-            val plantSoilDepth = etSoilDepth.text.toString()
-            if(plantName.isNotEmpty() && plantDescription.isNotEmpty()) {
-                val plant = Plant(plantName, plantDescription, plantSoilDepth, plantSun, plantWater)
-                plantAdapter.addPlant(plant)
-                etPlantName.text.clear()
-                etPlantDescription.text.clear()
-                etSunRequirement.text.clear()
-                etWaterRequirement.text.clear()
-                etSoilDepth.text.clear()
+        binding.etPlantName.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.etPlantName.text.clear()
+            }
+        }
+        binding.etPlantDescription.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.etPlantDescription.text.clear()
+            }
+        }
+        binding.etSoilDepth.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.etSoilDepth.text.clear()
+            }
+        }
+        binding.etSunRequirement.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.etSunRequirement.text.clear()
+            }
+        }
+        binding.etWaterRequirement.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.etWaterRequirement.text.clear()
             }
         }
 
-        btnTips.setOnClickListener {
-            val randomTip = GardeningTips().getRandomTip()
-            tvGardeningTips.text = randomTip
+        binding.btnAddPlant.setOnClickListener {
+            val plantName = binding.etPlantName.text.toString()
+            val plantDescription = binding.etPlantDescription.text.toString()
+            val plantSun = binding.etSunRequirement.text.toString()
+            val plantWater = binding.etWaterRequirement.text.toString()
+            val plantSoilDepth = binding.etSoilDepth.text.toString()
+
+            if (plantName.isNotEmpty()) {
+                val plant = Plant(plantName, plantDescription, plantSoilDepth, plantSun, plantWater)
+                plantAdapter.addPlant(plant)
+                binding.etPlantName.setText(initialPlantNameText)
+                binding.etPlantDescription.setText(initialPlantDescriptionText)
+                binding.etSunRequirement.setText(initialSunRequirementText)
+                binding.etWaterRequirement.setText(initialWaterRequirementText)
+                binding.etSoilDepth.setText(initialSoilDepthText)
+            }
         }
 
-        btnPairPlanting.setOnClickListener {
+        binding.btnTips.setOnClickListener {
+            val randomTip = GardeningTips().getRandomTip()
+            binding.tvGardeningTips.text = randomTip
+        }
+
+        binding.btnPairPlanting.setOnClickListener {
             val intent = Intent(this, PairPlantingActivity::class.java)
             startActivity(intent)
         }
     }
-
 }
+
+//class com.payne.gardenplanner.MainActivity : AppCompatActivity() {
+//
+//    private lateinit var plantAdapter : PlantAdapter
+//    private lateinit var gardeningTips: GardeningTips
+//    private lateinit var textView: TextView
+//    private lateinit var btnDropDown: Button
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.main_layout)
+//        plantAdapter = PlantAdapter(mutableListOf())
+//
+//        rvPlantList.adapter = plantAdapter
+//        rvPlantList.layoutManager = LinearLayoutManager(this)
+//
+//        btnAddPlant.setOnClickListener {
+//            val plantName = etPlantName.text.toString()
+//            val plantDescription = etPlantDescription.text.toString()
+//            val plantSun = etSunRequirement.text.toString()
+//            val plantWater = etWaterRequirement.text.toString()
+//            val plantSoilDepth = etSoilDepth.text.toString()
+//            if(plantName.isNotEmpty() && plantDescription.isNotEmpty()) {
+//                val plant = Plant(plantName, plantDescription, plantSoilDepth, plantSun, plantWater)
+//                plantAdapter.addPlant(plant)
+//                etPlantName.text.clear()
+//                etPlantDescription.text.clear()
+//                etSunRequirement.text.clear()
+//                etWaterRequirement.text.clear()
+//                etSoilDepth.text.clear()
+//            }
+//        }
+//
+//        btnTips.setOnClickListener {
+//            val randomTip = GardeningTips().getRandomTip()
+//            tvGardeningTips.text = randomTip
+//        }
+//
+//        btnPairPlanting.setOnClickListener {
+//            val intent = Intent(this, PairPlantingActivity::class.java)
+//            startActivity(intent)
+//        }
+//    }
+//
+//}
 
 //
 //    private val CHANNEL_ID = "channel_id"

@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp">
+
 
     <Button
         android:id="@+id/btnPairPlanting"
@@ -49,8 +52,8 @@
         android:layout_height="0dp"
         android:paddingStart="8dp"
         android:paddingBottom="12dp"
-        android:text="Gardening tip displayed here"
-        android:textSize="20sp"
+        android:text="Click 'Next Tip' to display a Gardening Tip"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnTips"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,37 +78,37 @@
 
     <EditText
         android:id="@+id/etPlantDescription"
-        android:layout_width="0dp"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
         android:text="Enter Plant Description"
         app:layout_constraintBottom_toTopOf="@+id/etWaterRequirement"
-        app:layout_constraintEnd_toStartOf="@+id/etSunRequirement"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etSunRequirement"
-        android:layout_width="wrap_content"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
         android:text="Enter Sun Requirement"
         app:layout_constraintBottom_toTopOf="@+id/etSoilDepth"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etPlantDescription" />
 
     <EditText
         android:id="@+id/etWaterRequirement"
-        android:layout_width="0dp"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:text="Enter Water Requirement"
+        android:text="Water Requirement"
         app:layout_constraintBottom_toTopOf="@+id/btnTips"
-        app:layout_constraintEnd_toStartOf="@+id/etSoilDepth"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etSoilDepth"
-        android:layout_width="wrap_content"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
         android:text="Enter Soil Depth"
         app:layout_constraintBottom_toTopOf="@+id/btnTips"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etWaterRequirement" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

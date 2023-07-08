@@ -17,10 +17,10 @@ class GPSMapper(private val context: Context) : LocationListener {
 
         fun startMapping() {
             if (ActivityCompat.checkSelfPermission(
-                    this,
+                    context,
                     Manifest.permission.ACCESS_FINE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                    this,
+                    context,
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {

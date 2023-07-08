@@ -1,12 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
+    id 'kotlin-parcelize'
 }
 
 android {
     namespace 'com.payne.gardenplanner'
     compileSdk 33
+    buildFeatures {
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId "com.payne.gardenplanner"
